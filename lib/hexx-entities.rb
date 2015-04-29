@@ -11,5 +11,6 @@ module Hexx
 
   require_relative "hexx/entities" # for namespace
   require_relative "hexx/entities/uuid"
+  require_relative "hexx/entities/uuids"
 
 end # module Hexx
