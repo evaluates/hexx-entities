@@ -10,5 +10,6 @@ require "securerandom"  # for uuids
 module Hexx
 
   require_relative "hexx/entities" # for namespace
+  require_relative "hexx/entities/uuid"
 
 end # module Hexx
