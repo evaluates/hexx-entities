@@ -131,10 +131,12 @@ Any uuid in the list is an instance of `Hexx::Entities::UUID` (kind of string).
 The instance is validatable:
 
 ```ruby
-uuid = Hexx::Entities::Base.new "9875023e-f483-cef9-ae09-27384015de79"
+uuid = Hexx::Entities::UUID.new "9875023e-f483-cef9-ae09-27384015de79"
+# => "9875023e-f483-cef9-ae09-27384015de79"
 uuid.validate! # passes
 
-uuid = Hexx::Entities::Base.new "not a valid uuid"
+uuid = Hexx::Entities::UUID.new "not a valid uuid"
+# => "not a valid uuid"
 uuid.validate! # <Attestor::InvalidError>
 ```
 
@@ -252,15 +254,13 @@ Uses [RSpec] 3.0+ for testing and [hexx-suit] for dev/test tools collection.
 Contributing
 ------------
 
-* Fork the project.
-* Read the [STYLEGUIDE](config/metrics/STYLEGUIDE).
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with Rakefile or version
-  (if you want to have your own version, that is fine but bump version
-  in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+* Read the [STYLEGUIDE](config/metrics/STYLEGUIDE)
+* [Fork the project](https://github.com/nepalez/hexx-entities)
+* Create your feature branch (`git checkout -b my-new-feature`)
+* Add tests for it
+* Commit your changes (`git commit -am '[UPDATE] Add some feature'`)
+* Push to the branch (`git push origin my-new-feature`)
+* Create a new Pull Request
 
 License
 -------
