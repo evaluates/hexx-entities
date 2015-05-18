@@ -4,15 +4,19 @@ require "attestor"      # for validations
 require "eigindir"      # for attributes
 require "securerandom"  # for uuids
 
-# Module Hexx provides the shared namespace for 'hexx' collection of gems
+# Shared namespace for the hexx collection of modules
 #
-# @author Andrew Kozin <Andrew.Kozin@gmail.com>
 module Hexx
 
-  require_relative "hexx/entities" # for namespace
-  require_relative "hexx/entities/part"
-  require_relative "hexx/entities/uuid"
-  require_relative "hexx/entities/uuids"
-  require_relative "hexx/entities/base"
+  # Module Entities provides a base class for domain entities
+  #
+  module Entities
+
+    require_relative "hexx-entities/part"
+    require_relative "hexx-entities/uuid"
+    require_relative "hexx-entities/uuids"
+    require_relative "hexx-entities/base"
+
+  end # module Entities
 
 end # module Hexx

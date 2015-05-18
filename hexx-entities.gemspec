@@ -1,5 +1,5 @@
 $:.push File.expand_path("../lib", __FILE__)
-require "hexx/entities/version"
+require "hexx-entities/version"
 
 Gem::Specification.new do |gem|
 
