@@ -52,11 +52,17 @@ class Item < Hexx::Entities::Base
 end # class Item
 
 item = Item.new foo: 1
+
+item.frozen?
+# => true
 item.attributes
 # => { uuids: ["31a840f4-71e2-4de1-3a6f-04d2103aa2e8"], foo: "1", bar: nil }
 item.validate!
 # <Attestor::InvalidError> because bar is nil
 ```
+
+To model parts of aggregate entities, that have no identity by themselves,
+use `Hexx::Entitites::Part`. The part is just the entity without `uuids`.
 
 Installation
 ------------
