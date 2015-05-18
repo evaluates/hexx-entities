@@ -39,15 +39,18 @@ describe Hexx::Entities::Part do
 
     before { klass.attribute :foo }
     before { klass.attribute :bar }
+    before { klass.attribute :qux }
 
     let(:bar)   { double }
     let(:baz)   { double serialize: { baz: :baz } }
+    let(:qux)   { [bar, baz] }
     let(:uuids) { [SecureRandom.uuid] }
 
-    subject(:entity) { klass.new(foo: bar, bar: baz) }
+    subject(:entity) { klass.new(foo: bar, bar: baz, qux: qux) }
 
     it "returns a nested hash" do
-      expect(entity.serialize).to eq(foo: bar, bar: { baz: :baz })
+      expect(entity.serialize)
+        .to eq(foo: bar, bar: { baz: :baz }, qux: [bar, { baz: :baz }])
     end
 
   end # describe #to_hash

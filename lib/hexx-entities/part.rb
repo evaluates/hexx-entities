@@ -46,10 +46,15 @@ module Hexx::Entities
     #
     # @return [Hash]
     def serialize
-      values = attributes.values.map do |item|
-        item.respond_to?(:serialize) ? item.serialize : item
-      end
-      attributes.keys.zip(values).to_h
+      attributes.map { |key, value| [key, serialize__(value)] }.to_h
+    end
+
+    private
+
+    def serialize__(value)
+      return value.serialize if value.respond_to? :serialize
+      return value.map { |item| serialize__(item) } if value.is_a? Array
+      value
     end
 
   end # class Part
