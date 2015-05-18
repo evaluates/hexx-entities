@@ -11,22 +11,8 @@ describe Hexx::Entities::Base do
 
   describe ".new" do
 
-    it "creates validatable object" do
-      expect(subject).to be_kind_of Attestor::Validations
-    end
-
-    it "creates attributable object" do
-      expect(subject).to be_kind_of Eigindir
-    end
-
-    it "creates comparable object" do
-      expect(subject).to be_kind_of Comparable
-    end
-
-    it "initializes attributes from hash" do
-      klass.attribute :foo
-      subject = klass.new foo: :bar
-      expect(subject.foo).to eq :bar
+    it "creates a part" do
+      expect(subject).to be_kind_of Hexx::Entities::Part
     end
 
   end # describe .new

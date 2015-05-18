@@ -2,7 +2,7 @@
 
 module Hexx::Entities
 
-  # Class Base provides a common interface for entities
+  # Class Base provides a common interface for entities, that have identity
   #
   # @example
   #   require "hexx-entities"
@@ -20,10 +20,7 @@ module Hexx::Entities
   # @author Andrew Kozin <Andrew.Kozin@gmail.com>
   #
   # @api public
-  class Base
-    include Attestor::Validations
-    include Comparable
-    include Eigindir
+  class Base < Part
 
     # @!scope class
     # @!method new(attributes)
@@ -36,7 +33,7 @@ module Hexx::Entities
     # @private
     def initialize(uuids: nil, **attributes)
       @uuids = UUIDs.build Array(uuids)
-      self.attributes = attributes
+      super attributes
     end
 
     # @!attribute [rw] uuids
@@ -56,19 +53,6 @@ module Hexx::Entities
     def ==(other)
       return false unless other.is_a? Base
       (other.uuids & uuids).any?
-    end
-
-    # Recursively serializes the entity to the hash
-    #
-    # Returns the hash of entity attributes, where every attribute
-    # that responds to `serialize` is serialized in its turn.
-    #
-    # @return [Hash]
-    def serialize
-      values = attributes.values.map do |item|
-        item.respond_to?(:serialize) ? item.serialize : item
-      end
-      attributes.keys.zip(values).to_h
     end
 
   end # class Base
